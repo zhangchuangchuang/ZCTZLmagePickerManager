@@ -7,9 +7,10 @@
 //
 
 #import "UIViewController+ZCLImagerSeleted.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface UIViewController()
-@property (nonatomic, strong) UIImagePickerController *imagePickerVc;
+
 @property (nonatomic, assign) BOOL is_Tailoring;//单选默认是允许裁剪
 @property (nonatomic, assign) BOOL is_video;//是否选择视频
 @property (nonatomic, assign) BOOL is_phone;//是否选择照片
@@ -19,9 +20,12 @@
 @property (nonatomic, assign) BOOL is_TakeVideo;//是否允许拍视频
 @property (nonatomic, assign) BOOL is_originalPhoto;//是否显示原图
 
-@property (nonatomic, assign) ZCKImageCropMode imgCropMode;
+@property (nonatomic, assign) ZCKImageCropMode imgCropMode;//裁剪model
 @property (nonatomic, assign) NSInteger phone_count;//照片最大可选数量
 
+@property (strong, nonatomic) CLLocation *location;
+@property (nonatomic, strong) UIImagePickerController *ga_imagePickerController;//系统相机
+@property (nonatomic, strong) NSMutableArray<PHAsset*> *selectAssets; //多选图片 选择转态回显
 //@property (nonatomic, assign) BOOL is_TimeAsc;//是否按修改时间升序排列  默认开启
 //@property (nonatomic, assign) BOOL is_Pictures;//是否显示内部拍照按钮 默认关闭
 //@property (nonatomic, assign) NSInteger line_count;//每行展示照片张数 默认是四 如有需要可以打开注释 自行修改
@@ -32,7 +36,6 @@
 
 #pragma mark -- category 不能直接添加成员变量，但是可以通过runtime的方式间接实现添加成员变量的效果。
 
-
 //MARK: -单选默认是允许裁剪
 -(void)setIs_Tailoring:(BOOL)is_Tailoring{
     objc_setAssociatedObject(self, @selector(is_Tailoring), @(is_Tailoring), OBJC_ASSOCIATION_RETAIN);
@@ -40,7 +43,6 @@
 -(BOOL)is_Tailoring{
     return [objc_getAssociatedObject(self, @selector(is_Tailoring)) boolValue];
 }
-
 //MARK: -是否选择视频
 - (void)setIs_video:(BOOL)is_video{
     objc_setAssociatedObject(self, @selector(is_video), @(is_video), OBJC_ASSOCIATION_RETAIN);
@@ -48,7 +50,6 @@
 -(BOOL)is_video{
     return [objc_getAssociatedObject(self, @selector(is_video)) boolValue];
 }
-
 //MARK: -是否选择照片
 - (void)setIs_phone:(BOOL)is_phone{
     objc_setAssociatedObject(self, @selector(is_phone), @(is_phone), OBJC_ASSOCIATION_RETAIN);
@@ -56,60 +57,56 @@
 -(BOOL)is_phone{
     return [objc_getAssociatedObject(self, @selector(is_phone)) boolValue];
 }
-
-
+//MARK: -是否选择GIF
 - (void)setIs_gif:(BOOL)is_gif{
     objc_setAssociatedObject(self, @selector(is_gif), @(is_gif), OBJC_ASSOCIATION_RETAIN);
 }
 - (BOOL)is_gif{
    return [objc_getAssociatedObject(self, @selector(is_gif)) boolValue];
 }
-
+//MARK: -使用原型裁剪框
 -(void)setIs_rount:(BOOL)is_rount{
     objc_setAssociatedObject(self, @selector(is_rount), @(is_rount), OBJC_ASSOCIATION_RETAIN);
 }
 - (BOOL)is_rount{
     return [objc_getAssociatedObject(self, @selector(is_rount)) boolValue];
 }
-
+//MARK: -是否允许多选视频
 - (void)setIs_multiple:(BOOL)is_multiple{
     objc_setAssociatedObject(self, @selector(is_multiple), @(is_multiple), OBJC_ASSOCIATION_RETAIN);
 }
-
 - (BOOL)is_multiple{
     return [objc_getAssociatedObject(self, @selector(is_multiple)) boolValue];
 }
-
+//MARK: -是否允许拍视频
 - (void)setIs_TakeVideo:(BOOL)is_TakeVideo{
     objc_setAssociatedObject(self, @selector(is_TakeVideo), @(is_TakeVideo), OBJC_ASSOCIATION_RETAIN);
 }
 - (BOOL)is_TakeVideo{
     return [objc_getAssociatedObject(self, @selector(is_TakeVideo)) boolValue];
 }
-
+//MARK: -是否显示原图
 - (void)setIs_originalPhoto:(BOOL)is_originalPhoto{
     objc_setAssociatedObject(self, @selector(is_originalPhoto), @(is_originalPhoto), OBJC_ASSOCIATION_RETAIN);
 }
-
 -(BOOL)is_originalPhoto{
     return [objc_getAssociatedObject(self, @selector(is_originalPhoto)) boolValue];
 }
-
+//MARK: -裁剪model
 -(void)setImgCropMode:(ZCKImageCropMode)imgCropMode{
     objc_setAssociatedObject(self, @selector(imgCropMode), @(imgCropMode), OBJC_ASSOCIATION_RETAIN);
 }
-
-
+-(ZCKImageCropMode)imgCropMode{
+    return [objc_getAssociatedObject(self, @selector(imgCropMode))intValue];
+}
+//MARK: -照片最大可选数量
 -(void)setPhone_count:(NSInteger)phone_count{
     objc_setAssociatedObject(self, @selector(phone_count), @(phone_count), OBJC_ASSOCIATION_RETAIN);
 }
 -(NSInteger)phone_count{
     return [objc_getAssociatedObject(self, @selector(phone_count))intValue];
 }
--(ZCKImageCropMode)imgCropMode{
-    return [objc_getAssociatedObject(self, @selector(imgCropMode))intValue];
-}
-
+//MARK: -对选 相片选中状态回显
 - (void)setSelectAssets:(NSMutableArray<PHAsset *> *)selectAssets{
     objc_setAssociatedObject(self, @selector(selectAssets), selectAssets, OBJC_ASSOCIATION_RETAIN);
 }
@@ -117,24 +114,38 @@
 - (NSMutableArray<PHAsset *> *)selectAssets{
     return objc_getAssociatedObject(self, @selector(selectAssets));
 }
-
+//MARK: -相片回调
 -(void)setLocationPhotoSelectedCompleteBlock:(LocationPhotoSelectedCompleteBlock)locationPhotoSelectedCompleteBlock{
     objc_setAssociatedObject(self, @selector(locationPhotoSelectedCompleteBlock), locationPhotoSelectedCompleteBlock,OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 -(LocationPhotoSelectedCompleteBlock)locationPhotoSelectedCompleteBlock{
     return  objc_getAssociatedObject(self, @selector(locationPhotoSelectedCompleteBlock));
 }
-
+//MARK: -视频回调
 - (void)setLocationVideoSelectedCompletBlock:(LocationVideoSelectedCompletBlock)locationVideoSelectedCompletBlock{
     objc_setAssociatedObject(self, @selector(locationVideoSelectedCompletBlock), locationVideoSelectedCompletBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
-
 - (LocationVideoSelectedCompletBlock)locationVideoSelectedCompletBlock{
     return objc_getAssociatedObject(self, @selector(locationVideoSelectedCompletBlock));
 }
+//MARK: -系统相机
+- (void)setGa_imagePickerController:(UIImagePickerController *)ga_imagePickerController{
+    objc_setAssociatedObject(self, @selector(ga_imagePickerController), ga_imagePickerController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+-(UIImagePickerController *)ga_imagePickerController{
+    return  objc_getAssociatedObject(self, @selector(ga_imagePickerController));
+}
+
+-(void)setLocation:(CLLocation *)location{
+    objc_setAssociatedObject(self, @selector(location), location, OBJC_ASSOCIATION_RETAIN);
+}
+
+-(CLLocation *)location{
+    return  objc_getAssociatedObject(self, @selector(location));
+}
 
 
-
+#pragma mark -----METHOD-----
 
 //MARK: -单选图片  裁剪  裁剪类型
 -(void)takePhoneIsTailoring:(BOOL)isTailoring imageCropMode:(ZCKImageCropMode)imageCropMode imageCropSize:(CGSize)imageCropSize finishBlock:(nonnull LocationPhotoSelectedCompleteBlock)finishBlock{
@@ -146,10 +157,8 @@
     self.is_phone = YES;
     self.is_gif = NO;
     self.imgCropMode = imageCropMode;
-    if (self.is_Tailoring) {//如果显示裁剪 原图状态不能打开
-        self.is_originalPhoto = NO;
-    }
-    
+    self.is_originalPhoto = !self.is_Tailoring;//如果显示裁剪 原图状态不能打开
+   
     if (finishBlock) {
         self.locationPhotoSelectedCompleteBlock = finishBlock;
     }
@@ -164,18 +173,24 @@
     self.is_phone = YES;
     self.is_gif = NO;
     self.is_Tailoring = NO;
+    self.selectAssets = [NSMutableArray array];
+       [self.selectAssets removeAllObjects];
+    self.selectAssets = selectedAsset;
     if (finishBlock) {
         self.locationPhotoSelectedCompleteBlock = finishBlock;
     }
     if (fileBlock) {
         self.locationVideoSelectedCompletBlock = fileBlock;
     }
-    
     [self pushImagePhonePicker];
 }
 
 
 
+
+
+
+//MARK: -跳转到相册
 - (void)pushImagePhonePicker{
  
     if (self.phone_count <= 0) {
@@ -217,7 +232,6 @@
     imagePickerVc.allowCrop = self.is_Tailoring;
     if (self.is_Tailoring) { //是否允许裁剪
         imagePickerVc.showSelectBtn = NO;//是否显示 选中状态图标  多选情况下不能设置为NO
-        
         if (self.imgCropMode == 0) {
             imagePickerVc.needCircleCrop = YES;
         }else if (self.imgCropMode == 1){
@@ -236,7 +250,6 @@
         if (self.locationPhotoSelectedCompleteBlock) {
             self.locationPhotoSelectedCompleteBlock(photos, assets, isSelectOriginalPhoto);
         }
-      
     }];
     
     [imagePickerVc setDidFinishPickingVideoHandle:^(UIImage *coverImage, PHAsset *asset) {
@@ -261,8 +274,17 @@
     
 }
 
-#pragma mark - UIImagePickerController
+//MARK: -调取相机
+- (void)takePhoneCameraChoce:(BOOL)isTailoring imageCropMode:(ZCKImageCropMode)imageCropMode finishBlock:(LocationPhotoSelectedCompleteBlock)finishBlock{
+    self.is_Tailoring = isTailoring;
+    if (finishBlock) {
+        self.locationPhotoSelectedCompleteBlock = finishBlock;
+    }
+    [self takePhoto];
+}
 
+
+#pragma mark - UIImagePickerController
 - (void)takePhoto {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) {
@@ -302,36 +324,96 @@
 // 调用相机
 - (void)pushImagePickerController {
     // 提前定位
-//    __weak typeof(self) weakSelf = self;
-//    [[TZLocationManager manager] startLocationWithSuccessBlock:^(NSArray<CLLocation *> *locations) {
-//        __strong typeof(weakSelf) strongSelf = weakSelf;
-//        strongSelf.location = [locations firstObject];
-//    } failureBlock:^(NSError *error) {
-//        __strong typeof(weakSelf) strongSelf = weakSelf;
-//        strongSelf.location = nil;
-//    }];
-    
+    __weak typeof(self) weakSelf = self;
+    [[TZLocationManager manager] startLocationWithSuccessBlock:^(NSArray<CLLocation *> *locations) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.location = [locations firstObject];
+    } failureBlock:^(NSError *error) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.location = nil;
+    }];
+    self.ga_imagePickerController = [[UIImagePickerController alloc] init];
+    self.ga_imagePickerController.delegate = self;
+         
+    // set appearance / 改变相册选择页的导航栏外
+
+         
+    UIBarButtonItem *tzBarItem, *BarItem;
+          
+    if (@available(iOS 9, *)) {
+        tzBarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[TZImagePickerController class]]];
+        BarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIImagePickerController class]]];
+    } else {
+        tzBarItem = [UIBarButtonItem appearanceWhenContainedIn:[TZImagePickerController class], nil];
+        BarItem = [UIBarButtonItem appearanceWhenContainedIn:[UIImagePickerController class], nil];
+    }
+    NSDictionary *titleTextAttributes = [tzBarItem titleTextAttributesForState:UIControlStateNormal];
+    [BarItem setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
     if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
-        self.imagePickerVc.sourceType = sourceType;
+        self.ga_imagePickerController.sourceType = sourceType;
         NSMutableArray *mediaTypes = [NSMutableArray array];
-        if (self.showTakeVideoBtnSwitch.isOn) {
-            [mediaTypes addObject:(NSString *)kUTTypeMovie];
-        }
-        if (self.showTakePhotoBtnSwitch.isOn) {
-            [mediaTypes addObject:(NSString *)kUTTypeImage];
-        }
+        [mediaTypes addObject:(NSString *)kUTTypeImage];
         if (mediaTypes.count) {
-            _imagePickerVc.mediaTypes = mediaTypes;
+            self.ga_imagePickerController.mediaTypes = mediaTypes;
         }
-        [self presentViewController:_imagePickerVc animated:YES completion:nil];
+        [self presentViewController:self.ga_imagePickerController animated:YES completion:nil];
     } else {
         NSLog(@"模拟器中无法打开照相机,请在真机中使用");
     }
 }
 
 
+
+#pragma mark ---
+- (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    TZImagePickerController *tzImagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    [tzImagePickerVc showProgressHUD];
+    if ([type isEqualToString:@"public.image"]) {
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        NSDictionary *meta = [info objectForKey:UIImagePickerControllerMediaMetadata];
+        // save photo and get asset / 保存图片，获取到asset
+        [[TZImageManager manager] savePhotoWithImage:image meta:meta location:self.location completion:^(PHAsset *asset, NSError *error){
+            [tzImagePickerVc hideProgressHUD];
+            if (error) {
+                NSLog(@"图片保存失败 %@",error);
+            } else {
+                TZAssetModel *assetModel = [[TZImageManager manager] createModelWithAsset:asset];
+                if (self.is_Tailoring) { // 允许裁剪,去裁剪
+                    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initCropTypeWithAsset:assetModel.asset photo:image completion:^(UIImage *cropImage, id asset) {
+                        if (self.locationPhotoSelectedCompleteBlock) {
+                            self.locationPhotoSelectedCompleteBlock(@[image], @[asset], NO);
+                        }
+                    }];
+                    imagePicker.allowPickingImage = YES;
+                    imagePicker.needCircleCrop = YES;
+                    imagePicker.circleCropRadius = 100;
+                    [self presentViewController:imagePicker animated:YES completion:nil];
+                } else {
+                     if (self.locationPhotoSelectedCompleteBlock) {
+                         self.locationPhotoSelectedCompleteBlock(@[image], @[asset], NO);
+                     }
+                }
+            }
+        }];
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    if ([picker isKindOfClass:[UIImagePickerController class]]) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
 #pragma mark -TZImagePickerControllerDelegate-
-- (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {}
+/// 用户点击了取消
+- (void)tz_imagePickerControllerDidCancel:(TZImagePickerController *)picker {}
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {}
+
+
+
+
 @end

@@ -349,6 +349,7 @@
 			baseConfigurationReference = 41A9BC52F76CEB40880853B1 /* Pods-ZCTZLmagePickerManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49S365C6A7;
 				INFOPLIST_FILE = ZCTZLmagePickerManager/Info.plist;
@@ -368,6 +369,7 @@
 			baseConfigurationReference = FCDEE2957661611C26788BFF /* Pods-ZCTZLmagePickerManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49S365C6A7;
 				INFOPLIST_FILE = ZCTZLmagePickerManager/Info.plist;

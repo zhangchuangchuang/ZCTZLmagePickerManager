@@ -41,7 +41,6 @@ typedef enum: NSInteger{
 
 @property (nonatomic,copy) LocationVideoSelectedCompletBlock locationVideoSelectedCompletBlock;
 
-@property (nonatomic, strong) NSMutableArray<PHAsset*> *selectAssets; //多选图片 选择转态回显
 /**
  单选
  @param isTailoring     是否裁剪
@@ -60,11 +59,14 @@ typedef enum: NSInteger{
  @param fileBlock  选中视频回调
  */
 -(void)takePhoneMultipleChoice:(NSInteger)count seleAsset:(NSMutableArray *)selectedAsset finishBlock:(LocationPhotoSelectedCompleteBlock)finishBlock fileBlock:(LocationVideoSelectedCompletBlock)fileBlock;
+
 /**
  选中相机
- 
+ @param isTailoring 是否裁剪
+ @param imageCropMode  裁剪的类型
+ @param finishBlock 图片回调
  */
-
+- (void)takePhoneCameraChoce:(BOOL)isTailoring imageCropMode:(ZCKImageCropMode)imageCropMode finishBlock:(LocationPhotoSelectedCompleteBlock)finishBlock;
 
 
 @end
