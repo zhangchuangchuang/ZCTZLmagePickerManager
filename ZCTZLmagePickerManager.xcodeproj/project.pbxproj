@@ -3,34 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2FFCA5F1241F4EA385D61DD /* libPods-ZCTZLmagePickerManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25493CBB02F03E0C7B1A4E27 /* libPods-ZCTZLmagePickerManager.a */; };
 		F43D4E8A25078D68006838EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4E8925078D68006838EA /* AppDelegate.m */; };
-		F43D4E8D25078D68006838EA /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4E8C25078D68006838EA /* SceneDelegate.m */; };
-		F43D4E9025078D68006838EA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4E8F25078D68006838EA /* ViewController.m */; };
-		F43D4E9325078D68006838EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43D4E9125078D68006838EA /* Main.storyboard */; };
 		F43D4E9625078D68006838EA /* ZCTZLmagePickerManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F43D4E9425078D68006838EA /* ZCTZLmagePickerManager.xcdatamodeld */; };
 		F43D4E9825078D6B006838EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43D4E9725078D6B006838EA /* Assets.xcassets */; };
-		F43D4E9B25078D6B006838EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F43D4E9925078D6B006838EA /* LaunchScreen.storyboard */; };
 		F43D4E9E25078D6B006838EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4E9D25078D6B006838EA /* main.m */; };
+		F43D4EA725079093006838EA /* UIViewController+ZCLImagerSeleted.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4EA625079093006838EA /* UIViewController+ZCLImagerSeleted.m */; };
+		F43D4EEA25091D25006838EA /* ZCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4EE925091D25006838EA /* ZCViewController.m */; };
+		F43D4EED2509D45B006838EA /* WJTZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F43D4EEB2509D45B006838EA /* WJTZImageManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25493CBB02F03E0C7B1A4E27 /* libPods-ZCTZLmagePickerManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZCTZLmagePickerManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41A9BC52F76CEB40880853B1 /* Pods-ZCTZLmagePickerManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZCTZLmagePickerManager.debug.xcconfig"; path = "Target Support Files/Pods-ZCTZLmagePickerManager/Pods-ZCTZLmagePickerManager.debug.xcconfig"; sourceTree = "<group>"; };
 		F43D4E8525078D68006838EA /* ZCTZLmagePickerManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZCTZLmagePickerManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43D4E8825078D68006838EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F43D4E8925078D68006838EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F43D4E8B25078D68006838EA /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		F43D4E8C25078D68006838EA /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		F43D4E8E25078D68006838EA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F43D4E8F25078D68006838EA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F43D4E9225078D68006838EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F43D4E9525078D68006838EA /* ZCTZLmagePickerManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ZCTZLmagePickerManager.xcdatamodel; sourceTree = "<group>"; };
 		F43D4E9725078D6B006838EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F43D4E9A25078D6B006838EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F43D4E9C25078D6B006838EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F43D4E9D25078D6B006838EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F43D4EA525079093006838EA /* UIViewController+ZCLImagerSeleted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZCLImagerSeleted.h"; sourceTree = "<group>"; };
+		F43D4EA625079093006838EA /* UIViewController+ZCLImagerSeleted.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZCLImagerSeleted.m"; sourceTree = "<group>"; };
+		F43D4EE825091D25006838EA /* ZCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCViewController.h; sourceTree = "<group>"; };
+		F43D4EE925091D25006838EA /* ZCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCViewController.m; sourceTree = "<group>"; };
+		F43D4EEB2509D45B006838EA /* WJTZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJTZImageManager.m; sourceTree = "<group>"; };
+		F43D4EEC2509D45B006838EA /* WJTZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJTZImageManager.h; sourceTree = "<group>"; };
+		FCDEE2957661611C26788BFF /* Pods-ZCTZLmagePickerManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZCTZLmagePickerManager.release.xcconfig"; path = "Target Support Files/Pods-ZCTZLmagePickerManager/Pods-ZCTZLmagePickerManager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FFCA5F1241F4EA385D61DD /* libPods-ZCTZLmagePickerManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65695EC4723B671B08C2DE20 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41A9BC52F76CEB40880853B1 /* Pods-ZCTZLmagePickerManager.debug.xcconfig */,
+				FCDEE2957661611C26788BFF /* Pods-ZCTZLmagePickerManager.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F43D4E7C25078D68006838EA = {
 			isa = PBXGroup;
 			children = (
 				F43D4E8725078D68006838EA /* ZCTZLmagePickerManager */,
 				F43D4E8625078D68006838EA /* Products */,
+				65695EC4723B671B08C2DE20 /* Pods */,
+				FB2CA97BC83ECC4C1DA81FF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,20 +78,36 @@
 		F43D4E8725078D68006838EA /* ZCTZLmagePickerManager */ = {
 			isa = PBXGroup;
 			children = (
+				F43D4EA425079049006838EA /* ZCTZLmgeManager */,
 				F43D4E8825078D68006838EA /* AppDelegate.h */,
 				F43D4E8925078D68006838EA /* AppDelegate.m */,
-				F43D4E8B25078D68006838EA /* SceneDelegate.h */,
-				F43D4E8C25078D68006838EA /* SceneDelegate.m */,
-				F43D4E8E25078D68006838EA /* ViewController.h */,
-				F43D4E8F25078D68006838EA /* ViewController.m */,
-				F43D4E9125078D68006838EA /* Main.storyboard */,
+				F43D4EE825091D25006838EA /* ZCViewController.h */,
+				F43D4EE925091D25006838EA /* ZCViewController.m */,
 				F43D4E9725078D6B006838EA /* Assets.xcassets */,
-				F43D4E9925078D6B006838EA /* LaunchScreen.storyboard */,
 				F43D4E9C25078D6B006838EA /* Info.plist */,
 				F43D4E9D25078D6B006838EA /* main.m */,
 				F43D4E9425078D68006838EA /* ZCTZLmagePickerManager.xcdatamodeld */,
 			);
 			path = ZCTZLmagePickerManager;
+			sourceTree = "<group>";
+		};
+		F43D4EA425079049006838EA /* ZCTZLmgeManager */ = {
+			isa = PBXGroup;
+			children = (
+				F43D4EEC2509D45B006838EA /* WJTZImageManager.h */,
+				F43D4EEB2509D45B006838EA /* WJTZImageManager.m */,
+				F43D4EA525079093006838EA /* UIViewController+ZCLImagerSeleted.h */,
+				F43D4EA625079093006838EA /* UIViewController+ZCLImagerSeleted.m */,
+			);
+			path = ZCTZLmgeManager;
+			sourceTree = "<group>";
+		};
+		FB2CA97BC83ECC4C1DA81FF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25493CBB02F03E0C7B1A4E27 /* libPods-ZCTZLmagePickerManager.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,9 +117,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F43D4EA125078D6B006838EA /* Build configuration list for PBXNativeTarget "ZCTZLmagePickerManager" */;
 			buildPhases = (
+				2D884013BD1223CA2EDC35C6 /* [CP] Check Pods Manifest.lock */,
 				F43D4E8125078D68006838EA /* Sources */,
 				F43D4E8225078D68006838EA /* Frameworks */,
 				F43D4E8325078D68006838EA /* Resources */,
+				C6407BD4D43B6B9E320E1689 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,13 +169,53 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43D4E9B25078D6B006838EA /* LaunchScreen.storyboard in Resources */,
 				F43D4E9825078D6B006838EA /* Assets.xcassets in Resources */,
-				F43D4E9325078D68006838EA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D884013BD1223CA2EDC35C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZCTZLmagePickerManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6407BD4D43B6B9E320E1689 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZCTZLmagePickerManager/Pods-ZCTZLmagePickerManager-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZCTZLmagePickerManager/Pods-ZCTZLmagePickerManager-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZCTZLmagePickerManager/Pods-ZCTZLmagePickerManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F43D4E8125078D68006838EA /* Sources */ = {
@@ -150,33 +223,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F43D4E9E25078D6B006838EA /* main.m in Sources */,
-				F43D4E9025078D68006838EA /* ViewController.m in Sources */,
+				F43D4EA725079093006838EA /* UIViewController+ZCLImagerSeleted.m in Sources */,
 				F43D4E9625078D68006838EA /* ZCTZLmagePickerManager.xcdatamodeld in Sources */,
 				F43D4E8A25078D68006838EA /* AppDelegate.m in Sources */,
-				F43D4E8D25078D68006838EA /* SceneDelegate.m in Sources */,
+				F43D4EED2509D45B006838EA /* WJTZImageManager.m in Sources */,
+				F43D4EEA25091D25006838EA /* ZCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F43D4E9125078D68006838EA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F43D4E9225078D68006838EA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F43D4E9925078D6B006838EA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F43D4E9A25078D6B006838EA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F43D4E9F25078D6B006838EA /* Debug */ = {
@@ -291,35 +346,39 @@
 		};
 		F43D4EA225078D6B006838EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41A9BC52F76CEB40880853B1 /* Pods-ZCTZLmagePickerManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49S365C6A7;
 				INFOPLIST_FILE = ZCTZLmagePickerManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.waoqi.ZCTZLmagePickerManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F43D4EA325078D6B006838EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCDEE2957661611C26788BFF /* Pods-ZCTZLmagePickerManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49S365C6A7;
 				INFOPLIST_FILE = ZCTZLmagePickerManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.waoqi.ZCTZLmagePickerManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
